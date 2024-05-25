@@ -1,0 +1,85 @@
+﻿.table td, .table th {
+    padding: 2px 5px
+}
+
+.table-bordered td, .table-bordered th {
+    border-right: 0px solid #dee2e6;
+    border-left: 0px solid #dee2e6;
+}
+
+.btn-many {
+    padding-left: 5px;
+}
+
+    .btn-many button {
+        margin: -0px;
+        border:0;
+        padding-left:12px;
+        padding-right:12px;
+    }
+
+#frmProjectSave .btn {
+    background: #f3adad !important;
+    border:0 !important;
+    font-size:14px;
+    padding:6px 8px !important
+}
+.layui-layer-btn {
+     font-size:15px;
+     padding-top:0 !important;
+}
+ 
+.layui-layer-btn a {
+    font-size: 15px;
+}
+#divProject .comboTreeDropDownContainer  {
+   height:100px
+}
+#frmPathSave .comboTreeDropDownContainer {
+    height: 100px
+}
+
+@media (max-width: 1270px) 
+{
+    .btn-many {
+        max-width:500px !important
+    }
+    .btn-many  button{
+        margin-bottom:5px;
+    }
+}
+#divDiff {
+    padding-top: 5px !important;
+    padding-left: 5px !important;
+    height:400px;
+    overflow-y:scroll
+}
+.diff_h3 {
+
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    display: block;
+    background: #673ab7;
+    color: white;
+    padding: 3px;
+    margin-left:-3px;
+}
+.diff_bule {
+    color: #009688;
+    font-size: 14px;
+}
+.diff_yellow {
+    color: red;
+    font-size: 14px;
+}
+.diff_red {
+    color: red;
+    font-size: 14px;
+}
+.diff_success {
+    margin-top: 150px;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+}

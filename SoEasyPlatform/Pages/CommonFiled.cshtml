@@ -1,0 +1,87 @@
+﻿@page
+@{
+    ViewData["Title"] = "公共字段管理";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+@section js{
+    <script src="~/views/system/commonfield.js@(ViewBag.version)"></script>
+}
+<div class="x_panel search_box">
+    <div class="x_title">
+        <h2><i class="fa fa-home"></i> 公共字段管理 （CodeFirst模式用到）</h2>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="x_content main-box">
+        <form id="divFrom" class="form-inline">
+            <div class="form-group">
+                <label for="ex3" class="col-form-label">名称：</label>
+                <input type="text" id="Desc" name="Desc" class="form-control input" placeholder=" ">
+            </div>
+            <button id="btnSearch" type="button" class="btn btn-blue"><i class="fa fa-search"></i>搜索</button>
+            <button id="btnReset" type="button" class="btn btn-info"><i class="fa fa-refresh"></i>重置</button>
+            @Html.Partial("Page")
+        </form>
+    </div>
+    <div class="x_content">
+        <button id="btnAdd" type="button" class="btn btn-green"><i class="fa fa-plus"></i>添加</button>
+        <button id="btnEdit" type="button" class="btn btn-primary"><i class="fa fa-edit"></i>修改</button>
+        <button id="btnDel" type="button" class="btn btn-search"><i class="fa fa-close"></i>删除</button>
+    </div>
+    <div class="x_content">
+        <table id="divGrid"></table>
+        <div id="divGridPage" class="pagination"></div>
+    </div>
+    <div id="divOpen" style="display:none">
+        <form id="frmSave" class="" action="" method="post" novalidate="">
+            <div class="x_content" style="margin-top:20px">
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">属性名称<span class="required">*</span></label>
+                    <div class="col-md-10 col-sm-9">
+                        <input type="text" id="saveClassProperName" name="ClassProperName" class="form-control" />
+                        <input type="hidden" readonly id="saveId" name="Id" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">数据类型<span class="required">*</span></label>
+                    <div class="col-md-10 col-sm-9">
+                        <input type="text" readonly id="saveCodeTypeName" name="CodeTypeName" placeholder="Select" autocomplete="off" />
+                        <input type="hidden" readonly id="saveCodeType" name="CodeType" autocomplete="off" />
+                    </div>
+                </div>
+
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">字段描述 </label>
+                    <div class="col-md-10 col-sm-9">
+                        <input id="saveDescription" type="text" name="Description" class="form-control" />
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">表中字段名</label>
+                    <div class="col-md-10 col-sm-9">
+                        <input type="text" id="saveDbColumnName" name="DbColumnName" class="form-control" />
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">必填 </label>
+                    <div class="col-md-10 col-sm-9">
+                        <input style="width:20px" type="checkbox" id="saveRequired" name="Required" value="true" class="form-control" />
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">自增 </label>
+                    <div class="col-md-10 col-sm-9">
+                        <input style="width:20px" type="checkbox" id="saveIsIdentity" name="IsIdentity" value="true" class="form-control" />
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">主键 </label>
+                    <div class="col-md-10 col-sm-9">
+                        <input style="width:20px" type="checkbox" id="saveIsPrimaryKey" name="IsPrimaryKey" value="true" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@Html.Partial("ParameterDescription")

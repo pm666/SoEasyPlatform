@@ -1,0 +1,61 @@
+﻿@page
+@{
+    ViewBag.version = "?v="+ SoEasyPlatform.Startup.Version;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>  @ViewData["Title"] </title>
+    @Html.Partial("UiCss")
+</head>
+<body id="sugarbody" class="nav-md footer_fixed">
+    <input id="hidRoot" type="hidden" value="@SoEasyPlatform.Startup.RootUrl" />
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div id="divTitle" class="navbar nav_title" style="border: 0;">
+                        <a href="#" class="site_title"><i class="fa fa-smile-o">  </i> <span>Web First @SoEasyPlatform.Startup.Version </span> <span v-cloak></span></a>
+                    </div>
+                    <div class="clearfix"></div>
+               
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        @Html.Partial("Menu")
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            @Html.Partial("Top")
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                
+                    <iframe id="iframeBody"    name="iframeLeft" frameborder="0" src="/Database"></iframe>
+             
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                      果糖大数据科技（南通）有限公司
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    @Html.Partial("UiJs")
+
+    <script src="~/vendors/sugarjs/sugar.js@(ViewBag.version)"></script>
+    <script src="~/views/shared/overwritesugar.js@(ViewBag.version)"></script>
+    <script src="~/views/shared/layout.js@(ViewBag.version)"></script>
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+﻿@page
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "生成业务";
+    ViewBag.DetaultName = "SugarBiz";
+}
+@section js{
+    <script src="~/views/system/codetable.js@(ViewBag.version)"></script>
+    <link href="~/views/system/css/CodeTable.css@(ViewBag.version)" rel="stylesheet" />
+    <script>
+        saveFileSuffix.value="Manager.cs"
+    </script>
+}
+<input id="hidType" type="hidden" value="2" />
+<div class="x_panel search_box">
+    @Html.Partial("Shared/_CodeTable.cshtml")
+</div>

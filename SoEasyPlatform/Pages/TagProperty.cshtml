@@ -1,0 +1,139 @@
+﻿@page
+@{
+    ViewData["Title"] = "属性标签管理";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+@section js{
+    <script src="~/views/system/tagproperty.js@(ViewBag.version)"></script>
+}
+<div class="x_panel search_box">
+    <div class="x_title">
+        <h2><i class="fa fa-home"></i> 属性标签管理 (可以扩展模版标签)</h2>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="x_content main-box">
+        <form id="divFrom" class="form-inline">
+            <div class="form-group">
+                <label for="ex3" class="col-form-label">名称：</label>
+                <input type="text" id="Desc" name="Desc" class="form-control input" placeholder=" ">
+            </div>
+            <button id="btnSearch" type="button" class="btn btn-blue"><i class="fa fa-search"></i>搜索</button>
+            <button id="btnReset" type="button" class="btn btn-info"><i class="fa fa-refresh"></i>重置</button>
+            @Html.Partial("Page")
+        </form>
+    </div>
+    <div class="x_content">
+        <button id="btnAdd" type="button" class="btn btn-green"><i class="fa fa-plus"></i>添加</button>
+        <button id="btnEdit" type="button" class="btn btn-primary"><i class="fa fa-edit"></i>修改</button>
+        <button id="btnDel" type="button" class="btn btn-search"><i class="fa fa-close"></i>删除</button>
+    </div>
+    <div class="x_content">
+        <table id="divGrid"></table>
+        <div id="divGridPage" class="pagination"></div>
+    </div>
+    <div id="divOpen" style="display:none">
+        <form id="frmSave" class="" action="" method="post" novalidate="">
+            <div class="x_content" style="margin-top:20px">
+    
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">唯一标识 <span class="required">*</span></label>
+                    <div class="col-md-10 col-sm-9">
+                        <input id="saveId" type="hidden" name="Id" class="form-control" />
+                        <input id="saveUniueCode" type="text" name="UniueCode" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 描述  </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveDescription" type="text" name="Description" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 控件类型 </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveControlType" type="text" name="ControlType" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 接口 Key </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveUrlKey" type="text" name="UrlKey" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 接口  </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveUrl" type="text" name="Url" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 字段值 </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveFileValue" type="text" name="FileValue" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 字段名 </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveFileName" type="text" name="FileName" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 扩展1  </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveExt1" type="text" name="Ext1" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">  扩展2</label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveExt2" type="text" name="Ext2" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 扩展3 </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveExt3" type="text" name="Ext3" class="form-control" />
+
+                    </div>
+                </div>
+                @*<div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align"> 扩展4 </label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveExt4" type="text" name="Ext4" class="form-control" />
+
+                    </div>
+                </div>
+                <div class="field item form-group">
+                    <label class="col-form-label col-md-2 col-sm-2  label-align">  扩展5</label>
+                    <div class="col-md-10 col-sm-9">
+
+                        <input id="saveExt5" type="text" name="Ext5" class="form-control" />
+
+                    </div>
+                </div>*@
+            </div>
+        </form>
+    </div>
+</div>
+@Html.Partial("ParameterDescription")

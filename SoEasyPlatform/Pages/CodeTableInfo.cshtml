@@ -1,0 +1,53 @@
+﻿@page
+@model SoEasyPlatform.Pages.CodeTableInfoModel
+@{
+    Layout = "~/Pages/Shared/_Window.cshtml";
+    var edit = string.IsNullOrEmpty(Request.QueryString.Value) ? "" : "edit";
+}
+@section js
+{
+    <script src="~/vendors/editTable/jquery.edittable.js@(ViewBag.version)"></script>
+    <script src="~/vendors/editTable/jquery-ui.js@(ViewBag.version)"></script>
+    <script src="~/views/system/codetableinfo@(edit).js@(ViewBag.version)"></script>
+}
+@section css
+{
+    <link href="~/vendors/editTable/jquery.edittable.css@(ViewBag.version)" rel="stylesheet" />
+    <link href="~/vendors/editTable/jquery-ui.css@(ViewBag.version)" rel="stylesheet" />
+    <link href="~/views/system/css/CodeTableInfo.css@(ViewBag.version)" rel="stylesheet" />
+}
+
+<div style="padding:10px">
+    <div class="x_title  t1">
+        <h2>实体/表</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <form id="Frm_table" class="form-inline">
+            <div class="form-group">
+                <label for="ex3" class="col-form-label"> 类名：</label>
+                <input id="txtId" type="hidden" />
+                <input id="txtClassName" type="text" name="Desc" class="form-control input" placeholder=" ">
+            </div>
+            <div class="form-group">
+                <label for="ex3" class="col-form-label"> 表名：</label>
+                <input id="txtTableName" type="text" name="Desc" class="form-control input" placeholder=" ">
+            </div>
+            <div class="form-group">
+                <label for="ex3" class="col-form-label"> 备注：</label>
+                <input type="text" id="txtDesc" name="Desc" class="form-control input" placeholder=" ">
+            </div>
+        </form>
+    </div>
+    <div class="x_title">
+        <h2>属性/字段</h2>
+        <div class="clearfix"></div>
+    </div>
+    @*<div id="divBtn" class="x_content">
+        <button id="btnEdit" type="button" class="btn btn-blue"><i class="fa fa-edit"></i>批量格式化实体属性</button>
+    </div>*@
+    <form method="post" action="#output">
+        <textarea id="examplex" style="display: none;" name="myField"></textarea>
+    </form>
+
+</div>

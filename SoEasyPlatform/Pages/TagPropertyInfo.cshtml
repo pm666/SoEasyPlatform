@@ -1,0 +1,75 @@
+﻿@page
+@using SoEasyPlatform
+@model SoEasyPlatform.Pages.TagPropertyInfoModel
+@{
+    var tableId = Convert.ToInt32(Request.Query["tableid"] + "");
+    var tableInfo = new Repository<CodeTable>().GetById(tableId);
+    List<CodeColumns> columns = new Repository<CodeColumns>().GetList(it => it.CodeTableId == tableId);
+    List<TagProperty> tagpros = new Repository<TagProperty>().GetList();
+    var mappings = new Repository<MappingProperty>().GetList();
+    Layout = "~/Pages/Shared/_Window.cshtml";
+}
+<script>
+    var tableName = "@tableInfo.ClassName";
+    function GetData()
+    {
+        var result = [];
+        $("#tbbox .tr").each(function () {
+            var th = $(this);
+            var values = [];
+            th.find(":checked").each(function () {
+                var item = $(this);
+                values.push(item.val())
+            });
+            result.push({ key: th.find("[name=ClassProperName]").val(), value: values });
+        });
+        return { table: tableName, columns: result };
+    }
+</script>
+<style>
+    td ,th{
+        padding: 10px;
+        font-size: 14px;
+        width: 200px;
+    }
+
+    tr:hover {
+        background: #ccc;
+    }
+    th:hover {
+        background: #fff;
+    }
+</style>
+<div style="height:400px;overflow-y:scroll">
+    <table id="tbbox">
+        <tr>
+            <th colspan="2">    @(tagpros.Count==0?"对不起没你还没有配置扩展属性，请到【扩展属性】菜单配置" : @tableInfo.TableName) </th>
+        </tr>
+        @foreach (var item in columns)
+        {
+            <tr class="tr">
+                <td>
+                    @item.ClassProperName @item.Description
+                    <input type="hidden" name="ClassProperName" value="@item.ClassProperName" />
+                </td>
+                <td style="width:400px">
+
+                    @foreach (TagProperty tgp in tagpros)
+                    {
+                        if (mappings.Any(it => it.TableName == tableInfo.ClassName && it.ColumnName == item.ClassProperName && it.TagId == tgp.Id.ToString()))
+                        {
+                            @: &nbsp; <input type="checkbox" checked="checked" value="@tgp.Id" /> @tgp.UniueCode
+                        }
+                        else
+                        {
+                            @: &nbsp; <input type="checkbox" value="@tgp.Id" /> @tgp.UniueCode
+                        }
+
+
+                    }
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>

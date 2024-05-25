@@ -1,0 +1,15 @@
+﻿@page
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "DbFirst 模式 ， 通过数库生成实体 （入门步骤 1.选库 2.点导入 3.生成方案）";
+    ViewBag.IsDbFirst = true;
+    ViewBag.DetaultName = "SugarModels";
+}
+@section js{
+    <script src="~/views/system/codetable.js@(ViewBag.version)"></script>
+    <link href="~/views/system/css/CodeTable.css@(ViewBag.version)" rel="stylesheet" />
+}
+<input id="hidType" type="hidden"  value="1"/>
+<div class="x_panel search_box">
+    @Html.Partial("Shared/_CodeTable.cshtml")
+</div>

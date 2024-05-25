@@ -1,0 +1,46 @@
+﻿@page
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "视图生成类模式，通过SQL生成实体 （入门步骤 1.选库 2.建类 3.生成方案）";
+    ViewBag.DetaultName = "SugarModels";
+    ViewBag.IsView = true;
+}
+@section js{
+    <script src="~/views/system/codetable.js@(ViewBag.version)"></script>
+    <link href="~/views/system/css/CodeTable.css@(ViewBag.version)" rel="stylesheet" />
+    <link href="~/views/system/css/dbview.css@(ViewBag.version)" rel="stylesheet" />
+    <script src="~/views/system/dbview.js@(ViewBag.version)"></script>
+}
+<input id="hidType" type="hidden" value="1" />
+<div class="x_panel search_box">
+    @Html.Partial("Shared/_CodeTable.cshtml")
+</div>
+<div id="divView" style="display:none">
+    <from id="frmView"  >
+        <br />
+        <div class="field item form-group lib">
+            <label class="col-form-label col-md-2 col-sm-2  label-align"> 类名：</label>
+            <div class="col-md-10 col-sm-9">
+                <input id="viewclassname" name="classname" type="text" placeholder="请输入类名" class="form-control" />
+            </div>
+
+        </div>
+        <div class="field item form-group lib">
+            <label class="col-form-label col-md-2 col-sm-2  label-align"> SQL：</label>
+            <div class="col-md-10 col-sm-9">
+                <label for="ex3" class="col-form-label"></label>
+                <textarea name="ViewSql" style="height:150px; " class="form-control">
+           
+            Select * from  替换视图名  
+
+
+         </textarea>
+                <input id="hidviewdbid" value="0" name="dbid" type="hidden" />
+            </div>
+
+        </div>
+   
+
+
+    </from>
+</div>
